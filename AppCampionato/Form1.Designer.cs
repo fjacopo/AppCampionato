@@ -35,17 +35,19 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.HotTrack;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.GridColor = System.Drawing.Color.Azure;
             this.dataGridView1.Location = new System.Drawing.Point(33, 62);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(808, 388);
+            this.dataGridView1.Size = new System.Drawing.Size(737, 388);
             this.dataGridView1.TabIndex = 0;
             // 
             // risultati_button
             // 
-            this.risultati_button.Location = new System.Drawing.Point(915, 370);
+            this.risultati_button.Location = new System.Drawing.Point(831, 370);
             this.risultati_button.Name = "risultati_button";
             this.risultati_button.Size = new System.Drawing.Size(220, 80);
             this.risultati_button.TabIndex = 1;
@@ -57,10 +59,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1188, 554);
+            this.ClientSize = new System.Drawing.Size(1086, 554);
             this.Controls.Add(this.risultati_button);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -69,9 +71,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button risultati_button;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 
