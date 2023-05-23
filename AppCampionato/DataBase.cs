@@ -26,7 +26,7 @@ namespace CampionatoApp
                 mySqlConnection.Open();
                 return true;
             }
-            catch (Exception ex)
+            catch 
             {
                 return false;
             }
@@ -38,7 +38,7 @@ namespace CampionatoApp
                 mySqlConnection.Close();
                 return true;
             }
-            catch (Exception ex)
+            catch 
             {
                 return false;
             }
