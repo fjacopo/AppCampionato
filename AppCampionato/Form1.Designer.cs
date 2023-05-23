@@ -32,15 +32,17 @@
             this.risultati_button = new System.Windows.Forms.Button();
             this.add_button = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.datatextbox = new System.Windows.Forms.TextBox();
-            this.casatextbox = new System.Windows.Forms.TextBox();
-            this.ospitetextbox = new System.Windows.Forms.TextBox();
-            this.risultatotextbox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.datalabel = new System.Windows.Forms.Label();
-            this.casalabel = new System.Windows.Forms.Label();
-            this.ospitelabel = new System.Windows.Forms.Label();
             this.risultatolabel = new System.Windows.Forms.Label();
+            this.ospitelabel = new System.Windows.Forms.Label();
+            this.casalabel = new System.Windows.Forms.Label();
+            this.datalabel = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.risultatotextbox = new System.Windows.Forms.TextBox();
+            this.ospitetextbox = new System.Windows.Forms.TextBox();
+            this.casatextbox = new System.Windows.Forms.TextBox();
+            this.datatextbox = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.elimina_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -80,6 +82,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.risultatolabel);
             this.panel1.Controls.Add(this.ospitelabel);
             this.panel1.Controls.Add(this.casalabel);
@@ -95,64 +98,15 @@
             this.panel1.TabIndex = 3;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // datatextbox
+            // risultatolabel
             // 
-            this.datatextbox.Location = new System.Drawing.Point(26, 43);
-            this.datatextbox.Name = "datatextbox";
-            this.datatextbox.Size = new System.Drawing.Size(220, 22);
-            this.datatextbox.TabIndex = 0;
-            // 
-            // casatextbox
-            // 
-            this.casatextbox.Location = new System.Drawing.Point(26, 109);
-            this.casatextbox.Name = "casatextbox";
-            this.casatextbox.Size = new System.Drawing.Size(220, 22);
-            this.casatextbox.TabIndex = 1;
-            // 
-            // ospitetextbox
-            // 
-            this.ospitetextbox.Location = new System.Drawing.Point(26, 183);
-            this.ospitetextbox.Name = "ospitetextbox";
-            this.ospitetextbox.Size = new System.Drawing.Size(220, 22);
-            this.ospitetextbox.TabIndex = 2;
-            // 
-            // risultatotextbox
-            // 
-            this.risultatotextbox.Location = new System.Drawing.Point(26, 261);
-            this.risultatotextbox.Name = "risultatotextbox";
-            this.risultatotextbox.Size = new System.Drawing.Size(220, 22);
-            this.risultatotextbox.TabIndex = 3;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.MediumSpringGreen;
-            this.button1.Location = new System.Drawing.Point(87, 319);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(93, 46);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "AGGIUNGI";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // datalabel
-            // 
-            this.datalabel.AutoSize = true;
-            this.datalabel.ForeColor = System.Drawing.Color.White;
-            this.datalabel.Location = new System.Drawing.Point(70, 14);
-            this.datalabel.Name = "datalabel";
-            this.datalabel.Size = new System.Drawing.Size(125, 16);
-            this.datalabel.TabIndex = 5;
-            this.datalabel.Text = "Data (gg/mm/aaaa)";
-            // 
-            // casalabel
-            // 
-            this.casalabel.AutoSize = true;
-            this.casalabel.ForeColor = System.Drawing.Color.White;
-            this.casalabel.Location = new System.Drawing.Point(73, 87);
-            this.casalabel.Name = "casalabel";
-            this.casalabel.Size = new System.Drawing.Size(106, 16);
-            this.casalabel.TabIndex = 6;
-            this.casalabel.Text = "Squadra di casa";
+            this.risultatolabel.AutoSize = true;
+            this.risultatolabel.ForeColor = System.Drawing.Color.White;
+            this.risultatolabel.Location = new System.Drawing.Point(97, 232);
+            this.risultatolabel.Name = "risultatolabel";
+            this.risultatolabel.Size = new System.Drawing.Size(59, 16);
+            this.risultatolabel.TabIndex = 8;
+            this.risultatolabel.Text = "Risultato";
             // 
             // ospitelabel
             // 
@@ -164,21 +118,93 @@
             this.ospitelabel.TabIndex = 7;
             this.ospitelabel.Text = "Squadra ospite";
             // 
-            // risultatolabel
+            // casalabel
             // 
-            this.risultatolabel.AutoSize = true;
-            this.risultatolabel.ForeColor = System.Drawing.Color.White;
-            this.risultatolabel.Location = new System.Drawing.Point(97, 232);
-            this.risultatolabel.Name = "risultatolabel";
-            this.risultatolabel.Size = new System.Drawing.Size(59, 16);
-            this.risultatolabel.TabIndex = 8;
-            this.risultatolabel.Text = "Risultato";
+            this.casalabel.AutoSize = true;
+            this.casalabel.ForeColor = System.Drawing.Color.White;
+            this.casalabel.Location = new System.Drawing.Point(73, 87);
+            this.casalabel.Name = "casalabel";
+            this.casalabel.Size = new System.Drawing.Size(106, 16);
+            this.casalabel.TabIndex = 6;
+            this.casalabel.Text = "Squadra di casa";
+            // 
+            // datalabel
+            // 
+            this.datalabel.AutoSize = true;
+            this.datalabel.ForeColor = System.Drawing.Color.White;
+            this.datalabel.Location = new System.Drawing.Point(70, 14);
+            this.datalabel.Name = "datalabel";
+            this.datalabel.Size = new System.Drawing.Size(125, 16);
+            this.datalabel.TabIndex = 5;
+            this.datalabel.Text = "Data (gg/mm/aaaa)";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.button1.Location = new System.Drawing.Point(43, 318);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(93, 46);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "AGGIUNGI";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // risultatotextbox
+            // 
+            this.risultatotextbox.Location = new System.Drawing.Point(26, 261);
+            this.risultatotextbox.Name = "risultatotextbox";
+            this.risultatotextbox.Size = new System.Drawing.Size(220, 22);
+            this.risultatotextbox.TabIndex = 3;
+            // 
+            // ospitetextbox
+            // 
+            this.ospitetextbox.Location = new System.Drawing.Point(26, 183);
+            this.ospitetextbox.Name = "ospitetextbox";
+            this.ospitetextbox.Size = new System.Drawing.Size(220, 22);
+            this.ospitetextbox.TabIndex = 2;
+            // 
+            // casatextbox
+            // 
+            this.casatextbox.Location = new System.Drawing.Point(26, 109);
+            this.casatextbox.Name = "casatextbox";
+            this.casatextbox.Size = new System.Drawing.Size(220, 22);
+            this.casatextbox.TabIndex = 1;
+            // 
+            // datatextbox
+            // 
+            this.datatextbox.Location = new System.Drawing.Point(26, 43);
+            this.datatextbox.Name = "datatextbox";
+            this.datatextbox.Size = new System.Drawing.Size(220, 22);
+            this.datatextbox.TabIndex = 0;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Red;
+            this.button2.Location = new System.Drawing.Point(158, 324);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 34);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "X";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // elimina_button
+            // 
+            this.elimina_button.Location = new System.Drawing.Point(376, 474);
+            this.elimina_button.Name = "elimina_button";
+            this.elimina_button.Size = new System.Drawing.Size(111, 47);
+            this.elimina_button.TabIndex = 4;
+            this.elimina_button.Text = "ELIMINA";
+            this.elimina_button.UseVisualStyleBackColor = true;
+            this.elimina_button.Click += new System.EventHandler(this.elimina_button_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(1086, 554);
+            this.Controls.Add(this.elimina_button);
             this.Controls.Add(this.add_button);
             this.Controls.Add(this.risultati_button);
             this.Controls.Add(this.dataGridView1);
@@ -208,6 +234,8 @@
         private System.Windows.Forms.Label casalabel;
         private System.Windows.Forms.Label risultatolabel;
         private System.Windows.Forms.Label ospitelabel;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button elimina_button;
     }
 }
 

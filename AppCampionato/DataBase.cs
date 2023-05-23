@@ -16,7 +16,7 @@ namespace CampionatoApp
         static readonly string server = "127.0.0.1";
         static readonly string user = "appcampionato";
         static readonly string password = "appcampionato";
-        static readonly string database = "financial";
+        static readonly string database = "campionato";
         public static string stringa_connessione = "server=' " + server + "'; user= '" + user + "';database='"+database+ "';password='" + password + "'";
         public MySqlConnection mySqlConnection = new MySqlConnection(stringa_connessione);
         public bool connect_database()    //connessione al database
