@@ -223,7 +223,7 @@
             this.titololabel.BackColor = System.Drawing.Color.Transparent;
             this.titololabel.Font = new System.Drawing.Font("Rockwell Nova Extra Bold", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titololabel.ForeColor = System.Drawing.Color.White;
-            this.titololabel.Location = new System.Drawing.Point(216, 9);
+            this.titololabel.Location = new System.Drawing.Point(441, 9);
             this.titololabel.Name = "titololabel";
             this.titololabel.Size = new System.Drawing.Size(370, 54);
             this.titololabel.TabIndex = 5;

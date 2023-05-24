@@ -88,6 +88,7 @@ namespace CampionatoApp
             closelistboxbutton.Hide();
             risultati_button.PerformClick();
             
+            
         }
 
         
