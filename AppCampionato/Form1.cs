@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -110,6 +111,7 @@ namespace CampionatoApp
 
                 // Verifica il formato del risultato
                 string risultato = risultatotextbox.Text;
+
                 string[] numeri = risultato.Split('-');
                 if (numeri.Length != 2 || !int.TryParse(numeri[0], out int numero1) || !int.TryParse(numeri[1], out int numero2))
                 {
@@ -117,7 +119,7 @@ namespace CampionatoApp
                     return;
                 }
 
-                // Recupera i dati inseriti dall'utente
+              
                 string squadra_casa = casatextbox.Text;
                 string squadra_ospite = ospitetextbox.Text;
 
@@ -142,6 +144,12 @@ namespace CampionatoApp
             }
             panel1.Hide();
             risultati_button.PerformClick();
+
+            datatextbox.Text = "";
+            casatextbox.Text = "";
+            ospitetextbox.Text = "";
+            risultatotextbox.Text = "";
+
         }
         
         private void button2_Click(object sender, EventArgs e)
@@ -157,22 +165,56 @@ namespace CampionatoApp
 
         private void elimina_button_Click(object sender, EventArgs e)
         {
-             // Verifica se è stata selezionata una riga
+           
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                // ottengo l'indice della riga che seleziono
+                // Ottieni l'indice della riga selezionata
                 int riga = dataGridView1.SelectedRows[0].Index;
 
-                dataGridView1.Rows.RemoveAt(riga);
                 
+                int id = Convert.ToInt32(dataGridView1.Rows[riga].Cells["ID"].Value); // Sostituisci "ID" con il nome corretto della colonna dell'ID nella tua DataGridView
+
+               
+                MySqlConnection connect = new MySqlConnection("SERVER=localhost; user id=appcampionato; password=appcampionato; database=campionato");
+
+                try
+                {
+                    connect.Open();
+
+                    string query = "DELETE FROM risultati WHERE ID = @id"; // Sostituisci "ID" con il nome corretto della colonna dell'ID nella tua tabella del database
+
+                    MySqlCommand cmd = new MySqlCommand(query, connect);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.ExecuteNonQuery();
+
+                    // Rimuovi la riga dalla DataGridView
+                    dataGridView1.Rows.RemoveAt(riga);
+
+                    MessageBox.Show("Dati eliminati", "Informazione", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch
+                {
+                    MessageBox.Show("Si è verificato un errore durante l'eliminazione dei dati", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    connect.Close();
+                }
             }
             else
             {
                 MessageBox.Show("Seleziona una riga da eliminare", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
 }
+
+
+
 
 
