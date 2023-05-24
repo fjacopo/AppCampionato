@@ -140,7 +140,7 @@ namespace CampionatoApp
                 cmd.Parameters.AddWithValue("@risultato", risultato);
                 cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Dati aggiunti" ,"Informazione", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               
             }
             catch 
             {
@@ -221,48 +221,7 @@ namespace CampionatoApp
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            MySqlConnection connect = new MySqlConnection("SERVER=localhost; user id=appcampionato; password=appcampionato; database=campionato");
-            try
-            {
-                connect.Open();
-
-                string query = "SELECT * FROM risultati";
-                MySqlCommand cmd = new MySqlCommand(query, connect);
-
-                using (MySqlDataReader reader = cmd.ExecuteReader())
-                {
-                    // Pulisci il ListBox
-                    risultatiListBox.Items.Clear();
-
-                    // Aggiungi i risultati al ListBox
-                    while (reader.Read())
-                    {
-                        string data = reader["data"].ToString();
-                        string squadra_casa = reader["squadra_casa"].ToString();
-                        string squadra_ospite = reader["squadra_ospiti"].ToString();
-                        string risultato = reader["risultato"].ToString();
-
-                        string risultatonellalist = $"{squadra_casa} vs {squadra_ospite}: {risultato}";
-                        risultatiListBox.Items.Add(risultatonellalist);
-                    }
-                }
-
-                
-            }
-            catch
-            {
-                MessageBox.Show("Si è verificato un errore durante l'estrazione dei risultati.", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                connect.Close();
-            }
-            risultatiListBox.Show();
-            closelistboxbutton.Show();
-            dataGridView1.Hide();
-        }
+        
 
         private void closelistboxbutton_Click(object sender, EventArgs e)
         {
@@ -270,6 +229,73 @@ namespace CampionatoApp
             closelistboxbutton.Hide();
             dataGridView1.Show();
         }
+
+        private void getsquadra_Click(object sender, EventArgs e)
+        {
+
+
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                string squadraSelezionata = dataGridView1.SelectedRows[0].Cells["squadra_casa"].Value.ToString();
+
+                MySqlConnection connect = new MySqlConnection("SERVER=localhost; user id=appcampionato; password=appcampionato; database=campionato");
+                try
+                {
+                    connect.Open();
+
+                    string query = "SELECT * FROM risultati WHERE squadra_casa = @squadra OR squadra_ospiti = @squadra";
+                    MySqlCommand cmd = new MySqlCommand(query, connect);
+                    cmd.Parameters.AddWithValue("@squadra", squadraSelezionata);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        risultatiListBox.Items.Clear();
+
+                        // Aggiungi i risultati al ListBox
+                        while (reader.Read())
+                        {
+                            DateTime data = Convert.ToDateTime(reader["data"]);
+                            string squadraCasa = reader["squadra_casa"].ToString();
+                            string squadraOspite = reader["squadra_ospiti"].ToString();
+                            string risultato = reader["risultato"].ToString();
+
+                            string dataformattata = data.ToString("dd/MM/yyyy");  // Formatta la data 
+                            string stringacompleta = $"{dataformattata}   {squadraCasa} vs {squadraOspite}: {risultato}";
+
+                            risultatiListBox.Items.Add(stringacompleta);
+                        }
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Errore durante l'estrazione dei risultati della squadra.", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    connect.Close();
+                }
+
+                risultatiListBox.Show();
+                closelistboxbutton.Show();
+                dataGridView1.Hide();
+            
+            }
+                else
+                {
+                    MessageBox.Show("Seleziona una riga contenente la squadra desiderata.", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            
+
+
+        }
+
+        private void risultatiListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }
 

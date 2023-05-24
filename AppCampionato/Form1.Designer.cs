@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.risultati_button = new System.Windows.Forms.Button();
@@ -45,9 +48,9 @@
             this.datatextbox = new System.Windows.Forms.TextBox();
             this.elimina_button = new System.Windows.Forms.Button();
             this.titololabel = new System.Windows.Forms.Label();
-            this.getrisultatibutton = new System.Windows.Forms.Button();
             this.risultatiListBox = new System.Windows.Forms.ListBox();
             this.closelistboxbutton = new System.Windows.Forms.Button();
+            this.getsquadra = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -55,11 +58,41 @@
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Rockwell", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Rockwell", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.GridColor = System.Drawing.Color.Azure;
             this.dataGridView1.Location = new System.Drawing.Point(33, 79);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Rockwell", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(737, 485);
             this.dataGridView1.TabIndex = 0;
@@ -176,6 +209,7 @@
             // 
             // risultatotextbox
             // 
+            this.risultatotextbox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.risultatotextbox.Font = new System.Drawing.Font("Rockwell Nova", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.risultatotextbox.Location = new System.Drawing.Point(56, 347);
             this.risultatotextbox.Name = "risultatotextbox";
@@ -184,6 +218,7 @@
             // 
             // ospitetextbox
             // 
+            this.ospitetextbox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.ospitetextbox.Font = new System.Drawing.Font("Rockwell Nova", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ospitetextbox.Location = new System.Drawing.Point(56, 255);
             this.ospitetextbox.Name = "ospitetextbox";
@@ -192,6 +227,7 @@
             // 
             // casatextbox
             // 
+            this.casatextbox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.casatextbox.Font = new System.Drawing.Font("Rockwell Nova", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.casatextbox.Location = new System.Drawing.Point(56, 163);
             this.casatextbox.Name = "casatextbox";
@@ -200,6 +236,7 @@
             // 
             // datatextbox
             // 
+            this.datatextbox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.datatextbox.Font = new System.Drawing.Font("Rockwell Nova", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.datatextbox.Location = new System.Drawing.Point(56, 89);
             this.datatextbox.Name = "datatextbox";
@@ -229,28 +266,18 @@
             this.titololabel.TabIndex = 5;
             this.titololabel.Text = "CAMPIONATO";
             // 
-            // getrisultatibutton
-            // 
-            this.getrisultatibutton.Font = new System.Drawing.Font("Rockwell Nova", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.getrisultatibutton.Location = new System.Drawing.Point(493, 588);
-            this.getrisultatibutton.Name = "getrisultatibutton";
-            this.getrisultatibutton.Size = new System.Drawing.Size(160, 47);
-            this.getrisultatibutton.TabIndex = 6;
-            this.getrisultatibutton.Text = "OTTIENI RISULATI";
-            this.getrisultatibutton.UseVisualStyleBackColor = true;
-            this.getrisultatibutton.Click += new System.EventHandler(this.button3_Click);
-            // 
             // risultatiListBox
             // 
             this.risultatiListBox.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.risultatiListBox.Font = new System.Drawing.Font("Rockwell Nova", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.risultatiListBox.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.risultatiListBox.ForeColor = System.Drawing.Color.White;
             this.risultatiListBox.FormattingEnabled = true;
-            this.risultatiListBox.ItemHeight = 24;
+            this.risultatiListBox.ItemHeight = 20;
             this.risultatiListBox.Location = new System.Drawing.Point(101, 93);
             this.risultatiListBox.Name = "risultatiListBox";
-            this.risultatiListBox.Size = new System.Drawing.Size(611, 460);
+            this.risultatiListBox.Size = new System.Drawing.Size(611, 444);
             this.risultatiListBox.TabIndex = 7;
+            this.risultatiListBox.SelectedIndexChanged += new System.EventHandler(this.risultatiListBox_SelectedIndexChanged);
             // 
             // closelistboxbutton
             // 
@@ -264,6 +291,17 @@
             this.closelistboxbutton.UseVisualStyleBackColor = false;
             this.closelistboxbutton.Click += new System.EventHandler(this.closelistboxbutton_Click);
             // 
+            // getsquadra
+            // 
+            this.getsquadra.Font = new System.Drawing.Font("Rockwell Nova", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.getsquadra.Location = new System.Drawing.Point(493, 588);
+            this.getsquadra.Name = "getsquadra";
+            this.getsquadra.Size = new System.Drawing.Size(208, 47);
+            this.getsquadra.TabIndex = 9;
+            this.getsquadra.Text = "OTTIENI DATI SQUADRA";
+            this.getsquadra.UseVisualStyleBackColor = true;
+            this.getsquadra.Click += new System.EventHandler(this.getsquadra_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -271,9 +309,9 @@
             this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1262, 673);
+            this.Controls.Add(this.getsquadra);
             this.Controls.Add(this.closelistboxbutton);
             this.Controls.Add(this.risultatiListBox);
-            this.Controls.Add(this.getrisultatibutton);
             this.Controls.Add(this.titololabel);
             this.Controls.Add(this.elimina_button);
             this.Controls.Add(this.add_button);
@@ -314,9 +352,9 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button elimina_button;
         private System.Windows.Forms.Label titololabel;
-        private System.Windows.Forms.Button getrisultatibutton;
         private System.Windows.Forms.ListBox risultatiListBox;
         private System.Windows.Forms.Button closelistboxbutton;
+        private System.Windows.Forms.Button getsquadra;
     }
 }
 
