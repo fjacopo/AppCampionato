@@ -35,9 +35,10 @@ namespace CampionatoApp
                 dataGridView1.Show();
                 risultatiListBox.Hide();
                 closelistboxbutton.Hide();
+
                 MySqlConnection connect = new MySqlConnection("SERVER=localhost; user id=appcampionato; password=appcampionato; database=campionato");
                 MySqlCommand cmd = new MySqlCommand("SELECT * FROM risultati");
-                cmd.CommandType = CommandType.Text;
+                cmd.CommandType = CommandType.Text; //la query deve essere testuale
                 cmd.Connection = connect;
                 connect.Open();
                 try
@@ -60,7 +61,7 @@ namespace CampionatoApp
                     MessageBox.Show(ex.Message);
                 }
                 finally
-                {
+                {    //verifico se la connessione al server è aperta, in tal caso la chiudo e così facendo rilascio i dati della query
                     if (connect.State == ConnectionState.Open)
                     {
                         connect.Close();
@@ -92,9 +93,10 @@ namespace CampionatoApp
         }
 
         
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //aggiungi
         {
 
+            //creo connect che è la connessione al database con i dati della stringa di connessione
 
             MySqlConnection connect = new MySqlConnection("SERVER=localhost; user id=appcampionato; password=appcampionato; database=campionato");
 
@@ -110,14 +112,14 @@ namespace CampionatoApp
                     return;
                 }
 
-                // Verifica il formato della data
+                //controllo se la data è scritta correttamente
                 if (!DateTime.TryParseExact(datatextbox.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime data))
                 {
                     MessageBox.Show("Il formato della data non è valido. Utilizza il formato gg/mm/aaaa.", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Verifica il formato del risultato
+                // controllo che il risultato sia scritto correttamente
                 string risultato = risultatotextbox.Text;
 
                 string[] numeri = risultato.Split('-');
@@ -131,9 +133,12 @@ namespace CampionatoApp
                 string squadra_casa = casatextbox.Text;
                 string squadra_ospite = ospitetextbox.Text;
 
-                // Inserisci i dati nel database
+                // creo la query con all'interno i dati scritti nelle textbox
                 string query = "INSERT INTO risultati (data, squadra_casa, squadra_ospiti, risultato) VALUES (@data, @squadra_casa, @squadra_ospiti, @risultato)";
-                MySqlCommand cmd = new MySqlCommand(query, connect);
+                
+                MySqlCommand cmd = new MySqlCommand(query, connect);//cmd contiene i dati della query
+
+                //aggiungo i dati della query al database nella colonna corretta 
                 cmd.Parameters.AddWithValue("@data", data);
                 cmd.Parameters.AddWithValue("@squadra_casa", squadra_casa);
                 cmd.Parameters.AddWithValue("@squadra_ospiti", squadra_ospite);
@@ -150,6 +155,7 @@ namespace CampionatoApp
             {
                 connect.Close();
             }
+
             panel1.Hide();
             risultati_button.PerformClick();
            
@@ -175,13 +181,14 @@ namespace CampionatoApp
         private void elimina_button_Click(object sender, EventArgs e)
         {
            
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (dataGridView1.SelectedRows.Count > 0) //le righe devono essere più di 0
             {
-                // Ottieni l'indice della riga selezionata
+             
+                //ottengo l'indice della riga 
                 int riga = dataGridView1.SelectedRows[0].Index;
 
-                
-                int id = Convert.ToInt32(dataGridView1.Rows[riga].Cells["ID"].Value); // Sostituisci "ID" con il nome corretto della colonna dell'ID nella tua DataGridView
+                //prende l'id della riga selezionata e lo mette in int
+                int id = Convert.ToInt32(dataGridView1.Rows[riga].Cells["ID"].Value); 
 
                
                 MySqlConnection connect = new MySqlConnection("SERVER=localhost; user id=appcampionato; password=appcampionato; database=campionato");
@@ -190,16 +197,19 @@ namespace CampionatoApp
                 {
                     connect.Open();
 
-                    string query = "DELETE FROM risultati WHERE ID = @id"; // Sostituisci "ID" con il nome corretto della colonna dell'ID nella tua tabella del database
+                    //elimino la riga guardando l' id
+                    string query = "DELETE FROM risultati WHERE ID = @id"; 
 
                     MySqlCommand cmd = new MySqlCommand(query, connect);
-                    cmd.Parameters.AddWithValue("@id", id);
-                    cmd.ExecuteNonQuery();
 
-                    // Rimuovi la riga dalla DataGridView
+                    cmd.Parameters.AddWithValue("@id", id); //aggiungo il valore dell' id a cmd che è collegato alla query
+
+                    cmd.ExecuteNonQuery();//esegue la query ma non restituisce risultati
+
+                    
                     dataGridView1.Rows.RemoveAt(riga);
 
-                    MessageBox.Show("Dati eliminati", "Informazione", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   
                 }
                 catch
                 {

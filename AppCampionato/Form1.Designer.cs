@@ -199,7 +199,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.MediumSpringGreen;
             this.button1.Font = new System.Drawing.Font("Rockwell Nova", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(115, 407);
+            this.button1.Location = new System.Drawing.Point(115, 402);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(110, 46);
             this.button1.TabIndex = 4;
