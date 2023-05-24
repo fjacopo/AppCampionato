@@ -32,6 +32,9 @@ namespace CampionatoApp
         
             private void risultati_button_Click(object sender, EventArgs e)
             {
+                dataGridView1.Show();
+                risultatiListBox.Hide();
+                closelistboxbutton.Hide();
                 MySqlConnection connect = new MySqlConnection("SERVER=localhost; user id=appcampionato; password=appcampionato; database=campionato");
                 MySqlCommand cmd = new MySqlCommand("SELECT * FROM risultati");
                 cmd.CommandType = CommandType.Text;
@@ -81,6 +84,10 @@ namespace CampionatoApp
         private void Form1_Load_1(object sender, EventArgs e)
         {
             panel1.Hide();
+            risultatiListBox.Hide();
+            closelistboxbutton.Hide();
+            risultati_button.PerformClick();
+            
         }
 
         
@@ -144,6 +151,7 @@ namespace CampionatoApp
             }
             panel1.Hide();
             risultati_button.PerformClick();
+           
 
             datatextbox.Text = "";
             casatextbox.Text = "";
@@ -210,6 +218,56 @@ namespace CampionatoApp
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            MySqlConnection connect = new MySqlConnection("SERVER=localhost; user id=appcampionato; password=appcampionato; database=campionato");
+            try
+            {
+                connect.Open();
+
+                string query = "SELECT * FROM risultati";
+                MySqlCommand cmd = new MySqlCommand(query, connect);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    // Pulisci il ListBox
+                    risultatiListBox.Items.Clear();
+
+                    // Aggiungi i risultati al ListBox
+                    while (reader.Read())
+                    {
+                        string data = reader["data"].ToString();
+                        string squadra_casa = reader["squadra_casa"].ToString();
+                        string squadra_ospite = reader["squadra_ospiti"].ToString();
+                        string risultato = reader["risultato"].ToString();
+
+                        string risultatonellalist = $"{squadra_casa} vs {squadra_ospite}: {risultato}";
+                        risultatiListBox.Items.Add(risultatonellalist);
+                    }
+                }
+
+                
+            }
+            catch
+            {
+                MessageBox.Show("Si è verificato un errore durante l'estrazione dei risultati.", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connect.Close();
+            }
+            risultatiListBox.Show();
+            closelistboxbutton.Show();
+            dataGridView1.Hide();
+        }
+
+        private void closelistboxbutton_Click(object sender, EventArgs e)
+        {
+            risultatiListBox.Hide();
+            closelistboxbutton.Hide();
+            dataGridView1.Show();
         }
     }
 }
